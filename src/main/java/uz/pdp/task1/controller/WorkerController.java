@@ -67,12 +67,13 @@ public class WorkerController {
 
     /**
      * this method edits worker by given id
-     * @param id Integer
+     *
+     * @param id        Integer
      * @param workerDTO json object comes
      * @return Result
      */
     @PutMapping("/{id}")
-    public ResponseEntity<Result> edit(@PathVariable Integer id, @RequestBody WorkerDTO workerDTO) {
+    public ResponseEntity<Result> edit(@PathVariable Integer id, @Valid @RequestBody WorkerDTO workerDTO) {
         Result result = workerService.edit(id, workerDTO);
         return ResponseEntity.status(result.getSuccess() ? 201 : 409).body(result);
     }
